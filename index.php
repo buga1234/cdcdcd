@@ -18,8 +18,7 @@
     <a-scene vr-mode-ui>
 
         <a-assets>
-
-            <img id="moveBtn" crossorigin="anonymous" src="images/buttons/movebtn.png">
+            <img id="moveBtn" crossorigin="anonymous" src="images/moveBtn.png" alt=""/>
             <audio id="clickSound" crossorigin="anonymous" src="components/click.ogg"></audio>
             <img id="first_image" crossorigin="anonymous" src="images/2.jpg">
             <img id="second_image" crossorigin="anonymous" src="images/2.jpg">
@@ -43,15 +42,15 @@
         <!--<a-sky id="move_btn" radius="10" src="#moveBtn"></a-sky>-->
 
         <!-- Image links. -->
-        <a-entity id="move_to_second_image" layout="type: line; margin: 1.5; width: 100px" position="15 -8 6" rotation="-120 -10 0">
+        <a-entity id="move_to_second_image" layout="type: line; margin: 1.5; width: 100px" position="15 -8 6" scale="3 3 3">
             <a-entity template="src: #link" data-src="#second_image" data-thumb="#moveBtn"></a-entity>
         </a-entity>
 
-        <a-entity id="move_to_third_image" layout="type: line; margin: 1.5" position="13 -6 6" rotation="-120 -10 0" width="16" height="9">
+        <a-entity id="move_to_third_image" layout="type: line; margin: 1.5" position="13 -6 6" scale="3 3 3">
             <a-entity template="src: #link" data-src="#third_image" data-thumb="#moveBtn"></a-entity>
         </a-entity>
 
-        <a-entity id="move_to_first_image" layout="type: line; margin: 1.5" position="20 -8 6" rotation="-120 -10 0" width="16" height="9">
+        <a-entity id="move_to_first_image" layout="type: line; margin: 1.5" position="20 -8 6" scale="3 3 3">
             <a-entity template="src: #link" data-src="#first_image" data-thumb="#moveBtn"></a-entity>
         </a-entity>
 
@@ -75,6 +74,18 @@
             </a-entity>
         </a-entity>
     </a-scene>
+
+    <style>
+
+        #controls{
+
+            position: absolute;
+            left: 0;
+            top: 100px;
+
+        }
+
+    </style>
 
     <script>
 
@@ -129,12 +140,25 @@
 
 
 
+
         var sky_image = document.getElementById('image-360');
         var camera = document.getElementById('camera');
 
         var move_to_first_image_btn = document.getElementById(images.third_image.move_btns[0].selector);
         var move_to_second_image_btn = document.getElementById(images.first_image.move_btns[0].selector);
         var move_to_third_image_btn = document.getElementById(images.second_image.move_btns[0].selector);
+
+        function setVideoSet() {
+
+
+            var x = document.getElementById("video_scale_x").value;
+            var y = document.getElementById("video_scale_y").value;
+            var z = document.getElementById("video_scale_z").value;
+
+            move_to_first_image_btn.setAttribute('rotation', "" + x + " " + y + " " + z + "");
+        }
+
+
 
         function setFirstImg() {
 
@@ -144,11 +168,14 @@
             move_to_second_image_btn.setAttribute('visible', 'true');
             move_to_third_image_btn.setAttribute('visible', 'true');
 
-            move_to_second_image_btn.setAttribute('position', '23 -8 7');
-            move_to_third_image_btn.setAttribute('position', '-18 -6 2');
+            move_to_second_image_btn.setAttribute('position', '11.81 -0.34 3.74');
+            move_to_second_image_btn.setAttribute('rotation', '0.00 -98.86 0.00');
+            move_to_second_image_btn.setAttribute('scale', '1.10 1.25 0.99');
 
-            move_to_second_image_btn.setAttribute('rotation', '-90 -15 0');
-            move_to_third_image_btn.setAttribute('rotation', '-90 10 3');
+
+            move_to_third_image_btn.setAttribute('position', '-18.00 -0.86 1.64');
+            move_to_third_image_btn.setAttribute('rotation', '0.00 99.00 0.00');
+            move_to_third_image_btn.setAttribute('scale', '2.07 2.57 0.24');
 
             camera.setAttribute('rotation', '1 95 1');
 
@@ -164,11 +191,14 @@
             move_to_second_image_btn.setAttribute('visible', 'false');
             move_to_third_image_btn.setAttribute('visible', 'true');
 
-            move_to_first_image_btn.setAttribute('position', '25 -8 4');
-            move_to_third_image_btn.setAttribute('position', '30 -8 4');
+            move_to_third_image_btn.setAttribute('position', '65.63 0.42 1.28');
+            move_to_third_image_btn.setAttribute('rotation', '-6.88 -95.68 0.57');
+            move_to_third_image_btn.setAttribute('scale', '4.00 5.70 13.70');
 
-            move_to_first_image_btn.setAttribute('rotation', '-80 10 -20');
-            move_to_third_image_btn.setAttribute('rotation', '-90 10 -20');
+
+            move_to_first_image_btn.setAttribute('position', '18.53 -1.04 5.45');
+            move_to_first_image_btn.setAttribute('rotation', '0.00 -99.00 0.00');
+            move_to_first_image_btn.setAttribute('scale', '2.24 2.89 3.00');
 
             camera.setAttribute('rotation', '1 -95 1');
 
@@ -184,12 +214,16 @@
             move_to_third_image_btn.setAttribute('visible', 'false');
 
 
-            move_to_first_image_btn.setAttribute('position', '-8 -10 19');
-            move_to_second_image_btn.setAttribute('position', '-28 -10 40');
+            move_to_first_image_btn.setAttribute('position', '-176.08 -18.89 -1.83');
+            move_to_first_image_btn.setAttribute('rotation', '0.00 88.81 0.00');
+            move_to_first_image_btn.setAttribute('scale', '13.33 20.36 16.51');
 
-//            move_to_first_image_btn.setAttribute('position', '-35 -40 80');
-//            move_to_first_image_btn.setAttribute('scale', '-10 -10 -10');
-//            move_to_first_image_btn.setAttribute('rotation', '-90 0 0');
+
+            move_to_second_image_btn.setAttribute('position', '-162.41 -6.97 -25.06');
+            move_to_second_image_btn.setAttribute('rotation', '0.00 88.00 0.00');
+            move_to_second_image_btn.setAttribute('scale', '8.42 11.83 12.70');
+
+
             camera.setAttribute('rotation', '1 150 1');
 
             console.log('3');
@@ -203,9 +237,9 @@
         move_to_third_image_btn.addEventListener('click', setThirdImg);
 
         $(document).ready(function () {
-//            setFirstImg();
+            setFirstImg();
 //            setSecondImg();
-            setThirdImg();
+//            setThirdImg();
         });
 
 
